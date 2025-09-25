@@ -19,6 +19,7 @@ def send_message(text):
 @app.route("/", methods=["POST"])
 def webhook():
     data = request.get_json()
+       print("Received payload:", data)
     sender_id = data.get("sender_id")
     name = data.get("name")
     text = data.get("text")
