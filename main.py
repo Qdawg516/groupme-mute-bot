@@ -23,7 +23,10 @@ def webhook():
     if text and "@" in text and "grok" in text:
         send_message(f"Grok isnt here you idiot")
         
-    if text and "c" in text and "lanker" in text:
+    if text and "Clanker" in text and "" in text:
+        send_message(f"Rude.")
+        
+    if text and "clanker" in text and "" in text:
         send_message(f"Rude.")
         
     return "OK", 200
