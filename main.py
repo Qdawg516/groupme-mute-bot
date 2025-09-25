@@ -19,7 +19,13 @@ def webhook():
 
     if text and "6" in text and "7" in text:
         send_message(f"DON'T SAY THAT")
-
+        
+    if text and "@" in text and "grok" in text:
+        send_message(f"Grok isnt here you idiot")
+        
+    if text and "c" in text and "lanker" in text:
+        send_message(f"Rude.")
+        
     return "OK", 200
 
 @app.route("/", methods=["GET"])
