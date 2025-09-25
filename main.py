@@ -1,14 +1,9 @@
 from flask import Flask, request
-import time
 import requests
 
 app = Flask(__name__)
 
-BOT_ID = "	677e433c8d5de31c9bbcdc6e1e"        # Replace with your GroupMe bot ID
-BOT_USER_ID = "TEMP"          # You'll update this after deployment
-
-muted_users = {}
-MUTE_DURATION = 60 * 60  # 1 hour
+BOT_ID = "677e433c8d5de31c9bbcdc6e1e"  # Replace this with your actual GroupMe Bot ID
 
 def send_message(text):
     requests.post("https://api.groupme.com/v3/bots/post", json={
@@ -19,26 +14,11 @@ def send_message(text):
 @app.route("/", methods=["POST"])
 def webhook():
     data = request.get_json()
-    print("Received payload:", data)
-    sender_id = data.get("sender_id")
-    name = data.get("name")
     text = data.get("text")
+    name = data.get("name")
 
-    if sender_id == BOT_USER_ID:
-        return "OK", 200
-
-    now = time.time()
-    if sender_id in muted_users:
-        if now < muted_users[sender_id]:
-            print(f"{name} is muted.")
-            return "Muted", 200
-        else:
-            del muted_users[sender_id]
-
-    if text.strip() == "67":
-        muted_users[sender_id] = now + MUTE_DURATION
-        send_message(f"{name} has been muted for 1 hour for saying 67.")
-        return "Muted", 200
+    if text and text.strip() == "67":
+        send_message(f"Hey {name}, you said 67!")
 
     return "OK", 200
 
