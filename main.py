@@ -18,7 +18,7 @@ def webhook():
     name = data.get("name")
 
     if text and "6" in text and "7" in text:
-        send_message(f"Hey {name}, DON'T SAY THAT 67 IS BANNED")
+        send_message(f"DON'T SAY THAT")
 
     return "OK", 200
 
