@@ -18,7 +18,7 @@ def webhook():
     name = data.get("name")
 
     if text and text.strip() == "67":
-        send_message(f"Hey {name}, kill yourse-")
+        send_message(f"Hey {name}, DON'T SAY THAT 67 IS BANNED")
 
     return "OK", 200
 
